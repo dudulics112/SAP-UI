@@ -11,7 +11,7 @@
       },
       "dataSources": {
         "booksService": {
-          "uri": "/sap/opu/odata/SAP/Z801_LIBRARY_SJ_SRV/",
+          "uri": "/sap/opu/odata/SAP/Z801_LIBRARY_LOIS_SRV/",
           "type": "OData",
           "settings": {
             "odataVersion": "2.0"
@@ -56,6 +56,51 @@
               "defaultBindingMode": "TwoWay"
             }
           }
+      },"routing": {
+        "config": {
+          "routerClass": "sap.m.routing.Router",
+          "viewType": "XML",
+          "viewPath": "org.ubb.books.view",
+          "controlId": "app",
+          "controlAggregation": "pages",
+          "transition": "slide",
+          
+          "async": true
+        },
+        "routes": [
+          {
+            "pattern": "",
+            "name": "appBookList",
+            "target": "booklist"
+          },
+          {
+            "pattern": "checked-out-books",
+            "name": "appCheckedoutBooks",
+            "target": "checkedoutBooks"
+          }, {
+            "pattern": "books-view",
+            "name": "BookView",
+            "target": "BookView"
+          }
+        ],
+        "targets": {
+          "booklist": {
+            "viewId": "bookList",
+            "viewName": "BookList",
+            "viewLevel": 1
+          },
+          "checkedoutBooks": {
+            "viewId": "CheckedoutBooks",
+            "viewName": "CheckedoutBooks",
+            "viewLevel": 1
+          },
+          "BookView": {
+            "viewId": "BookView",
+            "viewName": "BookView",
+            "viewLevel": 1
+          }
+          
+        }
       }
     }
   }

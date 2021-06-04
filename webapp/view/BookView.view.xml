@@ -1,0 +1,95 @@
+<mvc:View
+	controllerName="org.ubb.books.controller.BookView"
+	xmlns="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core"
+	xmlns:m="sap.m"
+	height="100%">
+	<m:Page
+		showHeader="false"
+		enableScrolling="false"
+		class="sapUiContentPadding">
+		<m:content>
+			<Table
+				id="table"
+				rows="{/BooksView}"
+				visibleRowCount="7">
+				<extension>
+					<m:OverflowToolbar style="Clear">
+						<m:Title id="tableTitle" text="Book view"/>
+					</m:OverflowToolbar>
+				</extension>
+				<columns>
+					<Column
+						id="Isbn"
+						sortProperty="Isbn"
+						filterProperty="Isbn">
+						<m:Label text="Isbn" />
+						<template>
+							<m:Text text="{Isbn}" wrapping="false" />
+						</template>
+					</Column>
+				<Column
+						id="Titel"
+						sortProperty="Titel"
+						filterProperty="Titel">
+						<m:Label text="Titel" />
+						<template>
+							<m:Text text="{Titel}" wrapping="false" />
+						</template>
+					</Column>
+					
+					<Column
+						id="author"
+						sortProperty="Author"
+						filterProperty="Author">
+						<m:Label text="Book Author" />
+						<template>
+							<m:Text text="{Author}" wrapping="false" />
+						</template>
+					</Column>
+					<Column
+						id="DatePublished"
+						sortProperty="DatePublished"
+						filterProperty="DatePublished">
+						<m:Label text="DatePublished" />
+						<template>
+							<m:Text text="{DatePublished}" wrapping="false" />
+						</template>
+					</Column>
+                    <Column
+						id="Language"
+						sortProperty="Language"
+						filterProperty="Language">
+						<m:Label text="Language" />
+						<template>
+							<m:Text text="{Language}" wrapping="false" />
+						</template>
+					</Column>
+                    <Column
+						id="TotalBookNr"
+						sortProperty="TotalBookNr"
+						filterProperty="TotalBookNr">
+						<m:Label text="TotalBookNr" />
+						<template>
+							<m:Text text="{TotalBookNr}" wrapping="false" />
+						</template>
+					</Column>
+                    <Column
+						id="AvailableBookNr"
+						sortProperty="AvailableBookNr"
+						filterProperty="AvailableBookNr">
+						<m:Label text="AvailableBookNr" />
+						<template>
+							<m:Text text="{AvailableBookNr}" wrapping="false" />
+						</template>
+					</Column>
+				</columns>
+				<footer>
+					<m:OverflowToolbar id="infobar"></m:OverflowToolbar>
+				</footer>
+			</Table>
+		</m:content>
+	</m:Page>
+</mvc:View>

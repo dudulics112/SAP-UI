@@ -1,52 +1,91 @@
-<mvc:View
-   xmlns:mvc="sap.ui.core.mvc"
-	xmlns:core="sap.ui.core"
-	xmlns="sap.m">
-
-   <Table id="idBooksTable"
-		items="{
+<View controllerName="org.ubb.books.controller.Books" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m">
+<Page title = "books" class = "sapUiResponsiveContentPadding">
+<content>
+	<Table id="idBooksTable" items="{
 			path: '/Books',
 			sorter: {
-				path: 'Title'
+				path: 'Titel'
 			}
-		}"
-		growing="true"
-		growingThreshold="10">
-	
+		}" growing="true" growingThreshold="10">
 		<columns>
 			<Column>
-				<Text text="Title" />
+				<Text text="Titel" />
 			</Column>
 			<Column>
 				<Text text="Author" />
 			</Column>
 			<Column>
-				<Text text="Published on" />
+				<Text text="DatePublished" />
 			</Column>
 			<Column>
 				<Text text="Language" />
 			</Column>
-         <Column>
-				<Text text="Available books" />
+			<Column>
+				<Text text="Available Book nNr" />
+			</Column>
+			<Column>
+				<Text text="TotalBookNr" />
+			</Column>
+			<Column>
+				<Text text="Edit" />
+			</Column>
+			<Column>
+				<Text text="Delete" />
 			</Column>
 		</columns>
 		<items>
 			<ColumnListItem>
 				<cells>
-					<ObjectIdentifier
-						title="{Title}"
-						text="{ISBN}"/>
+					<ObjectIdentifier title="{Titel}" text="{Isbn}" />
 					<Text text="{Author}" />
-					<Text text="{ 
-							path: 'DatePublished',
-							type: 'sap.ui.model.type.Date'
-               			}" 
-					/>
+					<Text text="{DatePublished}" />
 					<Text text="{Language}" />
-					<Text text="{= parseInt(${NubmerAvailableBooks}) }" />
+					<Text text="{AvailableBookNr}" />
+					<Text text="{TotalBookNr}" />
+					<Button  text="Edit" press=".startBookEdit" />
+					<Button  text="Delete" press=".deleteBook" />
 				</cells>
 			</ColumnListItem>
 		</items>
 	</Table>
-   
-</mvc:View>
+	<f:SimpleForm
+	maxContainerCols="2"
+	editable="true"
+	layout="ResponsiveGridLayout"
+	labelSpanL="2"
+	labelSpanM="2"
+	emptySpanL="2"
+	emptySpanM="2"
+	columnsL="2"
+	columnsM="2">
+	<f:content>
+				<core:Title text="Maintain Books" />
+				
+				<Label text="ISBN" required="true" />
+    <Input value="{view>/Isbn}" id="bookIsbn" />
+				
+				<Label text="Titel" required="true" />
+				<Input value="{view>/Titel}" id="bookTitle" />
+
+				<Label text="Author" required="true" />
+				<Input value="{view>/Author}" id="bookAuthor" />
+
+				<Label text="PublishDate" required="true" />
+				<Input value="{view>/DatePublished}" type="Date" id="bookPublishDate" />
+
+				<Label text="Language" required="true" />
+				<Input value="{view>/Language}" id="bookLanguage" />
+
+				<Label text="AvailableBookNr" required="true" />
+				<Input value="{view>/AvailableBookNr}" id="bookAvailableNr" type="Number"/>
+
+				<Label text="TotalBookNr" required="true" />
+				<Input value="{view>/TotalBookNr}" id="bookTotalNr" type="Number" />
+
+				<Button text="Save" press=".addBook"  />
+				<Button text="Edit" press=".editBook" />
+	</f:content>
+</f:SimpleForm>
+</content>
+</Page>
+</View>
